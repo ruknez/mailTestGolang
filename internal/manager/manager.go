@@ -29,7 +29,8 @@ type Manager struct {
 }
 
 // NewManager принимает канал которому идут данные и реализацию интерфейсов Worker и ProvidingResults.
-func NewManager(ctx context.Context,
+func NewManager(
+	ctx context.Context,
 	k int, inputData <-chan string,
 	worker Worker,
 	resultProvider ProvidingResults) *Manager {

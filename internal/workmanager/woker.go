@@ -3,6 +3,7 @@ package workmanager
 import (
 	"context"
 	"net/url"
+	"strings"
 
 	"github.com/mailTestGolang/internal/manager"
 )
@@ -44,5 +45,6 @@ func isItURL(st string) bool {
 	if err != nil {
 		return false
 	}
-	return err == nil && parsedURL.Scheme != "" && parsedURL.Host != ""
+
+	return err == nil && parsedURL.Scheme != "" && parsedURL.Host != "" && strings.Contains(parsedURL.Host, ".")
 }
