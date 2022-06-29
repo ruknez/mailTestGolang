@@ -32,6 +32,9 @@ func (s *siteParser) Calculate(url, word string) (int, error) {
 		return 0, err
 	}
 	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return 0, fmt.Errorf("invalid status code %d for %s", resp.StatusCode, url)
+	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
